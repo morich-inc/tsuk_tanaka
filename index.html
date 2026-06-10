@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>田中僚 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>田中僚 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社シーユーシー</a>
+  <a href="#k2">2. 株式会社じげん</a>
+  <a href="#k3">3. 霞ヶ関キャピタル株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">事業企画</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">株式会社シーユーシー</div>
+  <div class="co-url"><a href="https://www.cuc-jpn.com/" target="_blank">https://www.cuc-jpn.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区芝浦3丁目1−1 msb Tamachi 田町ステーションタワーN 15階</td></tr><tr><th>設立</th><td>2014年8月</td></tr><tr><th>従業員数</th><td>約3,743名（連結／2024年3月末時点）</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>経営陣リレーション</li><li>過去複数名入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">東証プライム上場エムスリー社のグループ企業。「医療という希望をつくる」をミッションに掲げ、国内外の医療機関に対し経営コンサルティング／運営支援を行っています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>東証プライム上場エムスリー社のグループ企業。「医療という希望をつくる」をミッションに掲げ、国内外の医療機関に対し経営コンサルティング／運営支援を行っています。超高齢社会という日本が直面する最大の医療課題を&quot;持続可能&quot;な社会システムとして再構築することを目指し、2014年に創業されました。</p><p>主軸事業は、国内外における病院経営支援と業務委託です。日本国内では、医療機関のご支援からスタートし、現在は訪問看護やホスピス介護へと裾野を広げ、医療機関の方々も含めると1万人を超える規模に達しています。国内だけでも約6,000名の従業員を抱える組織へと成長しました。</p><p>さらに、成長のエンジンはグローバルにあります。特に米国では既に34箇所のクリニックを経営し、約250名の従業員がいます。これをM&Aを通じてさらに拡大し、収益性の高い新たな診療科目を展開するため、積極的に投資を行っている状況です。</p><p><strong>優位性・強み・差別化ポイント：</strong></p><ul><li>医療現場×経営支援の統合的アプローチ</li><li>在宅ケア／ホスピス型住宅の自社運営によるノウハウ蓄積</li><li>急速な拡大とスケール可能性</li><li>変革志向・若手登用制度・組織風土</li><li>社会インパクトと使命感</li><li>財務基盤・上場企業としての信頼性</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【事業企画】次世代を担う変革リーダー</div>
+          <div class="job-preview">4つの主要事業において事業課題を特定し、解決策を立案・実行する「実戦型リーダー」</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>株式会社シーユーシー（以下：CUC）は、「医療という希望を創る。」のミッションのもと、国内外の医療課題の解決に向き合っているヘルスケアベンチャーです。</strong></p><p>超高齢社会である日本において、私たちが取り組むのは、世の中にある医療の「負」の解決です。「住み慣れた家で最期まで過ごしたい」と願う人々の希望を叶える訪問診療クリニックの経営支援から、病院や透析クリニック、外来クリニックの経営支援、訪問看護ステーション・ホスピス、メディカルケアレジデンスの運営まで、人々が医療を必要とするあらゆるフェーズで幅広いサービスを提供しています。</p><p><strong>募集背景：</strong><br>医療という希望を創り、変える<br>現在、日本の医療は大きな転換期にあります。私たちは単なる現状維持ではなく、既存の枠組みを打ち破る「変革」を必要としています。そこで、各主要事業のさらなる成長と進化を加速させるため、「次世代を担う変革リーダー」として、経営に近い視点で事業を推進する志高い人材を募集します。</p><p><strong>業務内容：</strong></p><ul><li>事業戦略・中期経営計画の立案と実行支援：データの裏付けに基づいた成長シナリオの策定</li><li>オペレーションの抜本的改善：現場の声を拾い上げ、ITやDXを駆使した高効率・高品質な医療提供体制の構築</li><li>新規拠点・サービスの立ち上げ：市場調査からオペレーション設計、人材採用を含む事業の垂直立ち上げ</li><li>重要KPIの設計とモニタリング：事業成長を可視化し、打ち手を先回りして提案</li></ul><p><span class='tag tag-must'>MUST</span></p><ul><li>弊社のミッション「医療という希望を創る。」に強く共感いただける方</li><li>事業会社、コンサルティング会社等で事業企画・経営企画等の経験3年以上</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>起業経験のある方</li><li>コンサル・ファンド・事業会社等でターンアラウンドのご経験のある方</li><li>海外子会社等に赴任し事業責任を担っていた方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">✅ 副業条件付き可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.cuc-jpn.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">経営戦略部長候補</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社じげん</div>
+  <div class="co-url"><a href="https://zigexn.co.jp/" target="_blank">https://zigexn.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区虎ノ門3-4-8</td></tr><tr><th>設立</th><td>2006年</td></tr><tr><th>従業員数</th><td>900名超</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>役員リレーション</li><li>過去入社実績アリ</li><li>カジュアル面談スタート可</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「生活機会（より良く生きるための選択肢）の最大化」をミッションに掲げ、独自のビジネスモデルで成長を続けている企業です。2018年6月には東証一部（現：プライム市場）へ市場変更を果たし、2019年の創業以来、14期連続で増収増益を実現。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「生活機会（より良く生きるための選択肢）の最大化」をミッションに掲げ、独自のビジネスモデルで成長を続けている企業です。2018年6月には東証一部（現：プライム市場）へ市場変更を果たし、2019年の創業以来、14期連続で増収増益を実現。2024年3月期には過去最高の連結売上収益を記録し、従業員数も900名を超えるなど、着実に規模を拡大しています。</p><p>求人、不動産（賃貸・売買・リフォーム）、自動車、旅行など、40以上の領域でメディア・サービスを展開。また、2013年のマザーズ上場以降、領域を限定せず、さまざまな事業や周辺サービスへのM&Aも継続的に行っています。</p><p>取り組んでいるのは、「情報の非対称性（情報を届けたい人と、それを必要とする人がうまく出会えない問題）」の解消です。膨大な情報があふれる中から必要な情報を見つけやすく整理・再構築し、ユーザー一人ひとりに合わせて届けることで、最良の意思決定を後押しする「場」をつくっています。</p><p><strong>特徴：</strong></p><ul><li>創業以来、基本は増収増益で成長（コロナ禍の2021年3月期のみ減収減益、旅行業中心にマイナス）</li><li>M&Aに積極的で累計28件（年3～4社）実施</li><li>強みは①マッチングテクノロジー、②M&A後の投資回収スピード（8割弱は3～5年で回収）</li><li>BtoBとBtoCどちらの知見も磨け、事業ドメインも多岐にわたる</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【経営戦略部】経営戦略部部長候補※経営企画、M&A・PMIを推進</div>
+          <div class="job-preview">経営・財務・投資の中核機能を担う経営戦略部において、部長候補を募集</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>経営・財務・投資の中核機能を担う経営戦略部において、部長候補を募集いたします。<br>経営管理、経営推進といった各コーポレート部門とも密に連携しながら、社長直轄で事業拡大を推進いただきます。<br>経営目線を持ちながら経営戦略部をマネジメントし、リードしていただくことができるポジションです。</p><p><strong>具体的な業務：</strong></p><ul><li>全社的な経営計画(経営戦略、事業戦略、財務戦略、投資戦略、組織戦略)の策定</li><li>グループ内の各企業、事業の管理会計、予実管理の取りまとめ</li><li>外部企業とのアライアンス提案、実行</li><li>M&A戦略の立案、対象企業の選定</li><li>金融機関、仲介企業、事業会社を通じたソーシング(案件発掘)</li><li>ビジネス、財務、法務観点からのデューデリジェンス</li><li>対象企業やカウンターパーティとの価格条件や契約条件の交渉</li><li>PMI(M&A後の経営統合)の戦略立案、ハンズオンでのバリューアップの実行</li><li>財務戦略の立案、資本市場や金融機関との折衝</li><li>マネジメント業務（メンバーのミッション策定、評価、育成） 等</li></ul><p><span class='tag tag-must'>MUST</span></p><ul><li>マネジメント経験</li></ul><p>上記に加え、以下いずれかの経験が1つ以上ある方</p><ul><li>投資銀行のファイナンス経験／M＆Aの経験（戦略策定～実行まで）</li><li>VCでキャピタリストとして投資・アライアンスを推進した経験</li><li>戦略コンサルティングファームにて分析・戦略策定・実行まで経験がある方</li><li>上場企業での経営企画経験（戦略策定・実行まで）</li><li>事業会社での資金調達の経験</li><li>起業、経営経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>公認会計士</li><li>財務戦略の構築経験</li><li>新規事業開発経験</li><li>ターンアラウンド経験</li><li>証券会社での公開引受・審査業務経験</li><li>インターネットセクターにおけるベンチャー企業での経営企画・CFO経験</li><li>企業アライアンスの経験</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://zigexn.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">事業戦略</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">霞ヶ関キャピタル株式会社</div>
+  <div class="co-url"><a href="https://kasumigaseki.co.jp/" target="_blank">https://kasumigaseki.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都千代田区霞が関3丁目2番1号 霞が関コモンゲート 西館 28階</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>役員リレーション</li><li>過去入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">人口減少、観光需要の変化、物流の人手不足、医療・介護の地域格差、海外市場の成長といった社会課題を起点に事業を設計する、不動産×金融領域の成長デベロッパーです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>人口減少、観光需要の変化、物流の人手不足、医療・介護の地域格差、海外市場の成長といった社会課題を起点に事業を設計する、不動産×金融領域の成長デベロッパーです。<br>ホテル・物流・ヘルスケア・海外の4領域において、用地の企画・開発から、運用、ファンド化（AM）までを自社で一貫して手がける独自モデルを確立しています。</p><p>成長スピードは上場企業の中でも際立っており、2025年8月期には中期経営計画を1年前倒しで達成。<br>さらにホテル特化型REITを上場し、主要事業はすべて「開発」から「運用」フェーズへと移行しました。<br>これにより、開発益に加え、PJM報酬・成功報酬・AM報酬を組み合わせた複層的かつ安定的な収益構造が完成しています。</p><p>現在は、日本で磨き上げた事業モデルをベースに、ドバイおよびASEANを中心とした海外開発事業を本格拡大中。<br>単なる投資に留まらず、自社主導の開発型ビジネスとして海外市場に展開している点も特徴です。<br>次の経営目標は、2029年に当期純利益500億円の達成。事業ポートフォリオの拡大に伴い、経営戦略・事業推進・管理機能の強化が進められています。</p><p><strong>同社の強み：</strong></p><ul><li>金融視点でアセットを組成し、不動産・建設領域で開発から運用まで一気通貫の「開発会社」機能</li><li>土地仕入～企画～開発ファンドへの短期売却まで回す独自のアセットライトモデル（半年以内目途）</li><li>全国キャラバン（情報収集チーム派遣）による希少案件の早期獲得と情報流入の量・スピード</li><li>金融（ファンド出身者）と不動産のプロフェッショナルが融合した体制で、物件からファンド構成まで内製化</li><li>リファラル採用比率が高く（約4割）、若手抜擢と報酬設計により優秀人材が集積</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業戦略（新規事業・既存事業）</div>
+          <div class="job-preview">各事業本部の戦略立案をリードし、新規事業創出を推進する戦略担当</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>当社は物流施設、ホテル、ヘルスケア施設などの多様な不動産アセットの開発・投資・運用を手がけています。<br>今後の成長を見据え、各事業本部の戦略立案をリードし、新規事業創出を推進できる戦略担当を募集します。<br>経営と事業の&quot;両軸&quot;で、会社の未来を描いていくポジションです。</p><p><strong>ミッション：</strong><br>経営層とともに、全社・事業の成長戦略を策定・推進。<br>現場と経営をつなぐ戦略中枢として、構想から実行までを一貫してリードいただきます。</p><p><strong>業務内容：</strong></p><ul><li>各本部と連携した中期経営計画、事業戦略の立案</li><li>新規事業の構想、事業性検証、PMFフェーズの実行支援</li><li>既存事業のポートフォリオ分析、収益改革の推進</li><li>M&A／業務提携等の企画立案・実行サポート</li><li>市場／競合分析、投資判断に資するレポーティング</li><li>経営会議向け資料の作成および意思決定サポート</li></ul><p><strong>ポジションの魅力：</strong></p><ul><li>経営直下の高裁量ポジション：代表や各本部長とともに、事業戦略を構築</li><li>構想から実行までを担う事業創造のリアル：戦略で終わらせず、事業を&quot;創る&quot;</li><li>変化と成長のスピード：上場企業の安定基盤 × ベンチャー的な挑戦文化</li><li>多様な事業ポートフォリオ：不動産／地方創生／インフラ／DX など幅広いフィールド</li></ul><p><span class='tag tag-must'>MUST</span></p><ul><li>コンサルティングファーム、事業会社での事業戦略／新規事業経験、または自身での起業経験</li><li>経営層、事業責任者と同じ視座で議論できる論理的思考力</li><li>定量、定性双方から課題を抽出し、仮説検証を回せる実行力</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>事業の構想から実行まで一貫して推進した経験</li><li>スタートアップや投資領域での実務経験</li><li>M&A、PMI、事業ポートフォリオ戦略への関与</li><li>ファイナンス、アカウンティング、法務の基礎知識</li><li>不動産、金融など当社事業領域への関心</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://kasumigaseki.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが田中僚 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
